@@ -1,0 +1,13 @@
+
+## 🛠️ Установка и запуск
+
+### 1. PostgreSQL
+
+Установите PostgreSQL и создайте базу данных:
+
+```bash
+# Подключитесь к PostgreSQL
+psql -U postgres
+
+# Выполните SQL скрипт
+\i backend/create_tables.sql
