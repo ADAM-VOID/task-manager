@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-console.log('🔍 Настройки подключения:');
+console.log('Настройки подключения:');
 console.log(`   Хост: ${process.env.DB_HOST || 'localhost'}`);
 console.log(`   Порт: ${process.env.DB_PORT || 5432}`);
 console.log(`   База: ${process.env.DB_NAME || 'task_manager'}`);
@@ -13,23 +13,19 @@ const pool = new Pool({
     database: process.env.DB_NAME || 'task_manager',
     user: process.env.DB_USER || 'postgres',
     password: process.env.DB_PASSWORD || '',
-    // Добавляем таймауты
     connectionTimeoutMillis: 5000,
     idleTimeoutMillis: 30000,
-    // Добавьте эти настройки для кодировки
     client_encoding: 'UTF8',
-    // Дополнительные настройки для русского языка
     options: '-c client_encoding=UTF8'
 });
 
-// Проверка подключения
 pool.connect((err, client, release) => {
     if (err) {
-        console.error('❌ Ошибка подключения к PostgreSQL:', err.message);
+        console.error('Ошибка подключения к PostgreSQL:', err.message);
     } else {
-        console.log('✅ Подключение к PostgreSQL успешно!');
+        console.log('Подключение к PostgreSQL успешно!');
         release();
     }
 });
 
-module.exports = pool;  // ← ВАЖНО: экспортируем pool
+module.exports = pool;

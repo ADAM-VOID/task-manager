@@ -81,7 +81,7 @@ function App() {
     return (
         <div className="app">
             <header className="app-header">
-                <h1>📋 Менеджер задач</h1>
+                <h1>Менеджер задач</h1>
             </header>
             <main className="app-main">
                 {error && <div className="error">{error}</div>}

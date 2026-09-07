@@ -7,20 +7,17 @@ const taskRoutes = require('./routes/taskRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.use('/api', taskRoutes);
 
-// Error handling
 app.use((err, req, res, next) => {
-    console.error('❌ Ошибка сервера:', err);
+    console.error('Ошибка сервера:', err);
     res.status(500).json({ error: 'Internal server error' });
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-    console.log(`📡 API: http://localhost:${PORT}/api/tasks`);
+    console.log(`Server running on port ${PORT}`);
+    console.log(`API: http://localhost:${PORT}/api/tasks`);
 });

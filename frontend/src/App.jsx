@@ -10,7 +10,6 @@ function App() {
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
 
-  // Загрузка задач при старте
   useEffect(() => {
     loadTasks();
   }, []);
@@ -185,7 +184,7 @@ function App() {
                         onClick={() => handleDeleteTask(task.id)}
                         className="delete-btn"
                       >
-                        🗑️
+                        DEL
                       </button>
                     </td>
                   </tr>

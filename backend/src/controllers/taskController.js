@@ -1,17 +1,15 @@
 const pool = require('../config/database');
 
-// Получить все задачи
 const getTasks = async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM tasks ORDER BY created_at DESC');
         res.json(result.rows);
     } catch (error) {
-        console.error('❌ Error getting tasks:', error);
+        console.error('Error getting tasks:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
 
-// Создать задачу
 const createTask = async (req, res) => {
     const { title, description } = req.body;
     
@@ -26,12 +24,11 @@ const createTask = async (req, res) => {
         );
         res.status(201).json(result.rows[0]);
     } catch (error) {
-        console.error('❌ Error creating task:', error);
+        console.error('Error creating task:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
 
-// Обновить статус задачи
 const updateTaskStatus = async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
@@ -53,12 +50,11 @@ const updateTaskStatus = async (req, res) => {
 
         res.json(result.rows[0]);
     } catch (error) {
-        console.error('❌ Error updating task:', error);
+        console.error('Error updating task:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
 
-// Удалить задачу
 const deleteTask = async (req, res) => {
     const { id } = req.params;
 
@@ -74,7 +70,7 @@ const deleteTask = async (req, res) => {
 
         res.status(204).send();
     } catch (error) {
-        console.error('❌ Error deleting task:', error);
+        console.error('Error deleting task:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
